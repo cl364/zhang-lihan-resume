@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#fdf5f7" />
-<title>张莉晗 · 数据分析师 — 个人简历</title>
+<title>张莉晗 · AI 应用工程师 — 个人简历</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
 <script>document.documentElement.classList.add('js')</script>
 <style>
@@ -12,14 +12,15 @@
     --bg: #fdf5f7;
     --text: #35262c;
     --text-2: #5c4650;
-    --muted: #a08ba0;
+    --muted: #b08a97;
     --card: rgba(255,255,255,.72);
-    --line: rgba(186,155,220,.28);
-    --g1: #f26d9e;
-    --g2: #6ea8fe;
-    --g3: #b48cff;
-    --grad: linear-gradient(120deg, #f26d9e 0%, #b48cff 50%, #6ea8fe 100%);
+    --line: rgba(233,150,175,.3);
+    --g1: #e85a93;
+    --g2: #f291ae;
+    --g3: #ffc3d4;
+    --grad: linear-gradient(120deg, #e85a93 0%, #f291ae 55%, #ffb3c8 100%);
     --ease: cubic-bezier(.16, 1, .3, 1);
+    --spring: cubic-bezier(.34, 1.56, .64, 1);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -32,10 +33,10 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-  ::selection { background: rgba(178,140,255,.28); }
+  ::selection { background: rgba(242,109,158,.22); }
   a { color: inherit; text-decoration: none; }
 
-  /* ---- 全页实景背景纹理 + 粉蓝辅助层 ---- */
+  /* ---- 全页实景背景纹理 + 樱花粉辅助层 ---- */
   .bg-photo {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background: url('images/sakura-footer.jpg') center / cover no-repeat;
@@ -44,10 +45,10 @@
   .bg-tint {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(1100px 620px at 82% -8%, rgba(255,150,180,.28), transparent 62%),
-      radial-gradient(1000px 600px at -12% 40%, rgba(255,195,214,.24), transparent 60%),
-      radial-gradient(1200px 700px at 90% 100%, rgba(110,168,254,.26), transparent 62%),
-      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 32%, #f5f8fe 100%);
+      radial-gradient(1100px 620px at 82% -8%, rgba(255,179,198,.3), transparent 62%),
+      radial-gradient(1000px 600px at -12% 40%, rgba(255,203,216,.26), transparent 60%),
+      radial-gradient(1200px 700px at 90% 100%, rgba(247,161,188,.28), transparent 62%),
+      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 34%, #fef7f9 100%);
   }
 
   /* ---- 飘落樱花花瓣 ---- */
@@ -59,7 +60,7 @@
     opacity: .55;
     animation: petal-fall linear infinite;
   }
-  .petal.b { background: linear-gradient(135deg, #e3edff, #9dbdf9); }
+  .petal.b { background: linear-gradient(135deg, #ffe3ec, #ffc3d4); }
   @keyframes petal-fall {
     0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
     25%  { transform: translate3d(30px, 28vh, 0) rotate(90deg); }
@@ -82,12 +83,12 @@
   }
   .sakura.b {
     background:
-      radial-gradient(circle at 50% 15%, #c9dcff 0 26%, transparent 27%),
-      radial-gradient(circle at 83% 39%, #c9dcff 0 26%, transparent 27%),
-      radial-gradient(circle at 71% 78%, #c9dcff 0 26%, transparent 27%),
-      radial-gradient(circle at 29% 78%, #c9dcff 0 26%, transparent 27%),
-      radial-gradient(circle at 17% 39%, #c9dcff 0 26%, transparent 27%),
-      radial-gradient(circle at 50% 50%, #e4edff 0 13%, transparent 14%);
+      radial-gradient(circle at 50% 15%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 83% 39%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 71% 78%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 29% 78%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 17% 39%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 50% 50%, #fff0f5 0 13%, transparent 14%);
   }
   @keyframes flower-drift {
     0%   { transform: rotate(0deg) translateY(-12px); }
@@ -98,11 +99,13 @@
   /* ---- 顶部导航 ---- */
   .nav {
     position: fixed; inset: 0 0 auto 0; z-index: 100;
-    background: rgba(253,245,247,.75);
+    background: rgba(253,245,247,.78);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(214,143,164,.15);
+    border-bottom: 1px solid rgba(233,150,175,.18);
+    transition: box-shadow .4s var(--ease);
   }
+  .nav.scrolled { box-shadow: 0 1px 0 rgba(214,143,164,.1), 0 10px 30px rgba(214,143,164,.1); }
   .nav-inner {
     max-width: 1080px; margin: 0 auto; height: 48px; padding: 0 24px;
     display: flex; align-items: center; justify-content: space-between;
@@ -110,7 +113,7 @@
   .nav-brand { font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
   .nav-links { display: flex; gap: 28px; }
   .nav-links a { font-size: 13px; color: var(--muted); transition: color .3s; }
-  .nav-links a:hover { color: #a06cf0; }
+  .nav-links a:hover { color: #d94f7e; }
 
   /* ---- 首屏 Hero ---- */
   .hero {
@@ -127,19 +130,22 @@
   .hero-tint {
     position: absolute; inset: 0; z-index: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(253,245,247,.82) 0%, rgba(253,246,249,.58) 42%, rgba(245,248,254,.18) 88%),
+      linear-gradient(180deg, rgba(253,245,247,.84) 0%, rgba(253,246,249,.6) 42%, rgba(254,247,249,.2) 88%),
       radial-gradient(900px 500px at 15% 25%, rgba(242,109,158,.16), transparent 60%),
-      radial-gradient(900px 500px at 85% 75%, rgba(110,168,254,.2), transparent 60%);
+      radial-gradient(900px 500px at 85% 75%, rgba(247,161,188,.2), transparent 60%);
   }
   .hero > *:not(.hero-photo):not(.hero-tint) { position: relative; z-index: 1; }
   .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .35em; color: var(--muted); text-transform: uppercase; }
   .name {
     margin: 26px 0 14px; font-size: clamp(64px, 13vw, 150px);
     font-weight: 600; letter-spacing: -.035em; line-height: 1.05;
-    background: linear-gradient(180deg, #e0558c 0%, #b48cff 55%, #7aa2f7 100%);
+    background: linear-gradient(180deg, #c94374 0%, #f291ae 60%, #ffc3d4 100%);
+    background-size: 100% 220%;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: name-shift 9s var(--ease) infinite alternate;
   }
+  @keyframes name-shift { from { background-position: 0 0; } to { background-position: 0 100%; } }
   .tagline {
     font-size: clamp(20px, 2.8vw, 32px); font-weight: 600; letter-spacing: .04em;
     background: var(--grad);
@@ -152,7 +158,7 @@
     display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   }
   .hero-meta a { transition: color .3s; }
-  .hero-meta a:hover { color: #a06cf0; }
+  .hero-meta a:hover { color: #d94f7e; }
   .sep { opacity: .4; }
 
   .stats { margin-top: 84px; width: 100%; max-width: 920px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -170,7 +176,7 @@
   .stat-label { margin-top: 10px; font-size: 15px; font-weight: 600; }
   .stat-desc { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
 
-  .scroll-cue { position: absolute; bottom: 36px; left: 50%; color: #b08fc9; animation: bob 2.6s ease-in-out infinite; }
+  .scroll-cue { position: absolute; bottom: 36px; left: 50%; color: #d98ca5; animation: bob 2.6s ease-in-out infinite; }
   .scroll-cue svg { display: block; }
   @keyframes bob {
     0%, 100% { transform: translate(-50%, 0); opacity: .45; }
@@ -186,7 +192,7 @@
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .sec-title { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -.02em; }
+  .sec-title { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
   .sec-en { margin-left: auto; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
 
   /* ---- 樱花实景横幅 ---- */
@@ -195,11 +201,11 @@
     height: 320px; border-radius: 24px; position: relative; overflow: hidden;
     background-size: cover; background-position: center 40%;
     border: 1px solid var(--line);
-    box-shadow: 0 8px 32px rgba(160,130,210,.12);
+    box-shadow: 0 8px 32px rgba(214,143,164,.12);
   }
   .banner-img::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(120deg, rgba(242,109,158,.16), rgba(110,168,254,.16));
+    background: linear-gradient(120deg, rgba(232,90,147,.13), rgba(255,179,198,.13));
   }
   .banner-cap { margin-top: 12px; text-align: center; font-size: 12.5px; letter-spacing: .25em; color: var(--muted); }
 
@@ -208,32 +214,32 @@
     position: relative; background: var(--card); border: 1px solid var(--line);
     border-radius: 24px; padding: 42px 46px;
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(160,130,210,.1);
-    transition: transform .5s var(--ease), border-color .5s, box-shadow .5s;
+    box-shadow: 0 8px 32px rgba(214,143,164,.1);
+    transition: transform .55s var(--spring), border-color .5s, box-shadow .5s;
   }
-  .card:hover { transform: translateY(-3px); border-color: rgba(150,130,220,.45); box-shadow: 0 24px 60px rgba(120,110,200,.16); }
-  .card-title { font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+  .card:hover { transform: translateY(-3px); border-color: rgba(232,90,147,.38); box-shadow: 0 24px 60px rgba(226,97,147,.16); }
+  .card-title { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
   .card-sub { margin-top: 6px; color: var(--muted); font-size: 13.5px; }
   .date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
   .badge {
     display: inline-block; padding: 6px 14px; border-radius: 999px;
     font-size: 12.5px; font-weight: 600; white-space: nowrap;
-    background: rgba(178,140,255,.12); border: 1px solid rgba(150,130,220,.32); color: #8a5fb0;
+    background: rgba(232,90,147,.1); border: 1px solid rgba(232,90,147,.3); color: #c94374;
   }
-  .badge.grad { background: linear-gradient(120deg, #e85a93, #8f7bf7 55%, #4f8ef0); border: none; color: #fff; }
+  .badge.grad { background: linear-gradient(120deg, #e0558c, #f59ab4); border: none; color: #fff; }
 
   /* ---- 创新点高亮条 ---- */
   .inno {
     margin-top: 22px; display: flex; gap: 14px; align-items: flex-start;
-    background: linear-gradient(120deg, rgba(242,109,158,.08), rgba(110,168,254,.08));
-    border: 1px solid rgba(150,130,220,.25);
+    background: linear-gradient(120deg, rgba(232,90,147,.07), rgba(255,179,198,.09));
+    border: 1px solid rgba(232,90,147,.22);
     border-radius: 14px; padding: 14px 18px;
   }
   .inno-tag {
     flex-shrink: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em;
     color: #fff; background: var(--grad); padding: 4px 10px; border-radius: 999px;
   }
-  .inno-text { font-size: 13.5px; line-height: 1.7; color: #7a4a6e; font-weight: 500; }
+  .inno-text { font-size: 13.5px; line-height: 1.7; color: #8a4a60; font-weight: 500; }
 
   /* ---- 时间线（项目经历） ---- */
   .timeline { display: grid; gap: 36px; }
@@ -241,7 +247,7 @@
   .t-date { padding-top: 44px; text-align: right; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.6; }
   .card-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
   .points { margin-top: 18px; list-style: none; display: grid; gap: 12px; }
-  .points li { position: relative; padding-left: 22px; color: var(--text-2); font-size: 15px; line-height: 1.75; }
+  .points li { position: relative; padding-left: 22px; color: var(--text-2); font-size: 15px; line-height: 1.8; }
   .points li::before {
     content: ""; position: absolute; left: 2px; top: 11px;
     width: 6px; height: 6px; border-radius: 50%; background: var(--grad);
@@ -255,7 +261,7 @@
   .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
     font-size: 12px; padding: 5px 13px; border-radius: 999px;
-    background: rgba(178,140,255,.07); border: 1px solid rgba(186,155,220,.3); color: #8a6a9a;
+    background: rgba(232,90,147,.06); border: 1px solid rgba(240,160,185,.35); color: #a8607c;
   }
 
   /* ---- 教育背景 ---- */
@@ -266,9 +272,9 @@
   .mini-grid { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .mini {
     background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 18px;
-    padding: 26px 24px; transition: transform .5s var(--ease), border-color .5s;
+    padding: 26px 24px; transition: transform .55s var(--spring), border-color .5s;
   }
-  .mini:hover { transform: translateY(-3px); border-color: rgba(150,130,220,.4); }
+  .mini:hover { transform: translateY(-3px); border-color: rgba(232,90,147,.32); }
   .mini-num {
     font-size: 40px; font-weight: 600; font-variant-numeric: tabular-nums;
     background: var(--grad);
@@ -296,12 +302,15 @@
   /* ---- 页脚 ---- */
   footer {
     position: relative; z-index: 1; margin-top: 130px;
-    border-top: 1px solid rgba(214,143,164,.2);
+    border-top: 1px solid rgba(233,150,175,.22);
     padding: 48px 24px 56px; text-align: center;
   }
   .foot-name { font-size: 17px; font-weight: 600; }
   .foot-contact { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
-  .foot-copy { margin-top: 22px; font-size: 12px; color: #b3a3b8; }
+  .foot-switch { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  .foot-switch a { color: #c94374; font-weight: 600; transition: opacity .3s; }
+  .foot-switch a:hover { opacity: .7; }
+  .foot-copy { margin-top: 22px; font-size: 12px; color: #c2a3ae; }
 
   /* ---- 滚动渐入动画 ---- */
   .js .reveal {
@@ -329,12 +338,12 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .petal, .sakura, .scroll-cue { animation: none !important; }
+    .petal, .sakura, .scroll-cue, .name { animation: none !important; }
   }
 </style>
 </head>
 <body>
-<!-- 全页实景背景 + 粉蓝辅助层 -->
+<!-- 全页实景背景 + 樱花粉辅助层 -->
 <div class="bg-photo"></div>
 <div class="bg-tint"></div>
 
@@ -346,7 +355,7 @@
 <div class="sakura b" style="top:6%;  left:62%; width:44px; height:44px; opacity:.28; filter:blur(.5px);  animation-duration:24s; animation-delay:-8s"></div>
 <div class="sakura b" style="top:88%; left:78%; width:64px; height:64px; opacity:.18; filter:blur(1.5px); animation-duration:36s; animation-delay:-20s"></div>
 
-<!-- 飘落花瓣（粉 + 蓝） -->
+<!-- 飘落花瓣 -->
 <div class="petal" style="left:6%;  width:12px; height:12px; animation-duration:22s; animation-delay:-4s"></div>
 <div class="petal b" style="left:14%; width:15px; height:15px; animation-duration:25s; animation-delay:-11s"></div>
 <div class="petal" style="left:25%; width:10px; height:10px; animation-duration:19s; animation-delay:-7s"></div>
@@ -359,9 +368,9 @@
 <div class="petal" style="left:90%; width:11px; height:11px; animation-duration:24s; animation-delay:-9s"></div>
 <div class="petal" style="left:96%; width:9px;  height:9px;  animation-duration:21s; animation-delay:-17s"></div>
 
-<header class="nav">
+<header class="nav" id="topnav">
   <div class="nav-inner">
-    <div class="nav-brand">张莉晗 <span style="color:var(--muted);font-weight:400">· 数据分析师</span></div>
+    <div class="nav-brand">张莉晗 <span style="color:var(--muted);font-weight:400">· AI 应用工程师</span></div>
     <nav class="nav-links">
       <a href="#edu">教育背景</a>
       <a href="#projects">项目经历</a>
@@ -376,7 +385,7 @@
   <div class="hero-tint"></div>
   <div class="eyebrow reveal">个人简历 · Resume</div>
   <h1 class="name reveal" style="--d:.12s">张莉晗</h1>
-  <div class="tagline reveal" style="--d:.24s">数据分析师</div>
+  <div class="tagline reveal" style="--d:.24s">AI 应用工程师</div>
   <p class="hero-sub reveal" style="--d:.34s">郑州升达经贸管理学院 · 大数据管理与应用 · 2027 届</p>
   <div class="hero-meta reveal" style="--d:.42s">
     <a href="tel:+8617365935097">(+86) 17365935097</a>
@@ -613,6 +622,17 @@
     </div>
     <div class="skill-grid">
       <div class="card skill-card reveal">
+        <h3 class="card-title">AI 与大模型</h3>
+        <div class="tags">
+          <span class="tag">AIGC 智能体</span>
+          <span class="tag">大模型 API 集成</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">DeepSeek</span>
+          <span class="tag">Coze 工作流</span>
+          <span class="tag">Agent 工作流</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal" style="--d:.08s">
         <h3 class="card-title">数据分析</h3>
         <div class="tags">
           <span class="tag">Python</span>
@@ -623,7 +643,7 @@
           <span class="tag">数据挖掘</span>
         </div>
       </div>
-      <div class="card skill-card reveal" style="--d:.08s">
+      <div class="card skill-card reveal" style="--d:.16s">
         <h3 class="card-title">数据库与工程</h3>
         <div class="tags">
           <span class="tag">Java</span>
@@ -631,17 +651,6 @@
           <span class="tag">Web 前端</span>
           <span class="tag">分布式计算</span>
           <span class="tag">Office 全系列</span>
-        </div>
-      </div>
-      <div class="card skill-card reveal" style="--d:.16s">
-        <h3 class="card-title">AI 与大模型</h3>
-        <div class="tags">
-          <span class="tag">AIGC 智能体</span>
-          <span class="tag">大模型 API 集成</span>
-          <span class="tag">Claude Code</span>
-          <span class="tag">DeepSeek</span>
-          <span class="tag">Coze 工作流</span>
-          <span class="tag">Agent 工作流</span>
         </div>
       </div>
       <div class="card skill-card reveal" style="--d:.24s">
@@ -661,12 +670,17 @@
 </main>
 
 <footer>
-  <div class="foot-name">张莉晗 <span style="color:var(--muted);font-weight:400">· 数据分析师</span></div>
+  <div class="foot-name">张莉晗 <span style="color:var(--muted);font-weight:400">· AI 应用工程师</span></div>
   <div class="foot-contact">(+86) 17365935097 · 17365935097@163.com · 郑州升达经贸管理学院 2027 届</div>
+  <div class="foot-switch">另见：<a href="data.html">数据分析师版简历 →</a></div>
   <div class="foot-copy">&copy; 2026 张莉晗 · Sakura Minimal</div>
 </footer>
 
 <script>
+  // 导航滚动阴影
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+
   // 滚动渐入动画
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
