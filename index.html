@@ -36,7 +36,12 @@
   ::selection { background: rgba(242,109,158,.22); }
   a { color: inherit; text-decoration: none; }
 
-  /* ---- 全页渐变背景 + 多彩辅助层 ---- */
+  /* ---- 全页实景背景纹理 + 多彩辅助层 ---- */
+  .bg-photo {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-footer.jpg') center / cover no-repeat;
+    opacity: .11;
+  }
   .bg-tint {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
@@ -154,6 +159,12 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 140px 24px 96px;
   }
+  .hero-photo {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-hero.jpg') center 32% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+  }
   .hero-tint {
     position: absolute; inset: 0; z-index: 0; pointer-events: none;
     background:
@@ -163,7 +174,7 @@
       radial-gradient(700px 440px at 88% 12%, rgba(196,181,253,.16), transparent 60%),
       radial-gradient(640px 420px at 4% 84%, rgba(165,216,250,.14), transparent 60%);
   }
-  .hero > *:not(.hero-tint) { position: relative; z-index: 1; }
+  .hero > *:not(.hero-photo):not(.hero-tint) { position: relative; z-index: 1; }
   .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .35em; color: var(--muted); text-transform: uppercase; }
   .name {
     margin: 26px 0 14px; font-size: clamp(64px, 13vw, 150px);
@@ -364,7 +375,8 @@
 </style>
 </head>
 <body>
-<!-- 全页渐变背景 + 多彩辅助层 -->
+<!-- 全页实景背景 + 多彩辅助层 -->
+<div class="bg-photo"></div>
 <div class="bg-tint"></div>
 
 <!-- 樱花花朵 -->
@@ -407,6 +419,7 @@
 </header>
 
 <section class="hero">
+  <div class="hero-photo"></div>
   <div class="hero-tint"></div>
   <div class="eyebrow reveal">个人简历 · Resume</div>
   <h1 class="name reveal" style="--d:.12s">张莉晗</h1>
