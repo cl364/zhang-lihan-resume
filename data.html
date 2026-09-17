@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#fdf5f7" />
+<title>张莉晗 · 数据分析师 — 个人简历</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #fdf5f7;
+    --text: #35262c;
+    --text-2: #5c4650;
+    --muted: #b08a97;
+    --card: rgba(255,255,255,.72);
+    --line: rgba(233,150,175,.3);
+    --g1: #e85a93;
+    --g2: #f291ae;
+    --g3: #ffc3d4;
+    --grad: linear-gradient(120deg, #e85a93 0%, #f291ae 55%, #ffb3c8 100%);
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    --spring: cubic-bezier(.34, 1.56, .64, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: rgba(242,109,158,.22); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---- 全页实景背景纹理 + 樱花粉辅助层 ---- */
+  .bg-photo {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-footer.jpg') center / cover no-repeat;
+    opacity: .11;
+  }
+  .bg-tint {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(1100px 620px at 82% -8%, rgba(255,179,198,.3), transparent 62%),
+      radial-gradient(1000px 600px at -12% 40%, rgba(255,203,216,.26), transparent 60%),
+      radial-gradient(1200px 700px at 90% 100%, rgba(247,161,188,.28), transparent 62%),
+      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 34%, #fef7f9 100%);
+  }
+
+  /* ---- 飘落樱花花瓣 ---- */
+  .petal {
+    position: fixed; top: -8vh; z-index: 0; pointer-events: none;
+    width: 14px; height: 14px;
+    background: linear-gradient(135deg, #ffd6e0, #ff9eb5);
+    border-radius: 150% 0 150% 0;
+    opacity: .55;
+    animation: petal-fall linear infinite;
+  }
+  .petal.b { background: linear-gradient(135deg, #ffe3ec, #ffc3d4); }
+  @keyframes petal-fall {
+    0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+    25%  { transform: translate3d(30px, 28vh, 0) rotate(90deg); }
+    50%  { transform: translate3d(-20px, 56vh, 0) rotate(180deg); }
+    75%  { transform: translate3d(26px, 84vh, 0) rotate(270deg); }
+    100% { transform: translate3d(-10px, 115vh, 0) rotate(360deg); }
+  }
+
+  /* ---- 樱花花朵 ---- */
+  .sakura {
+    position: fixed; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 15%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 83% 39%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 71% 78%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 29% 78%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 17% 39%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 50% 50%, #ffd9e4 0 13%, transparent 14%);
+    animation: flower-drift linear infinite;
+  }
+  .sakura.b {
+    background:
+      radial-gradient(circle at 50% 15%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 83% 39%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 71% 78%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 29% 78%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 17% 39%, #ffd9e6 0 26%, transparent 27%),
+      radial-gradient(circle at 50% 50%, #fff0f5 0 13%, transparent 14%);
+  }
+  @keyframes flower-drift {
+    0%   { transform: rotate(0deg) translateY(-12px); }
+    50%  { transform: rotate(180deg) translateY(12px); }
+    100% { transform: rotate(360deg) translateY(-12px); }
+  }
+
+  /* ---- 顶部导航 ---- */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background: rgba(253,245,247,.78);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(233,150,175,.18);
+    transition: box-shadow .4s var(--ease);
+  }
+  .nav.scrolled { box-shadow: 0 1px 0 rgba(214,143,164,.1), 0 10px 30px rgba(214,143,164,.1); }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; height: 48px; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 13px; color: var(--muted); transition: color .3s; }
+  .nav-links a:hover { color: #d94f7e; }
+
+  /* ---- 首屏 Hero ---- */
+  .hero {
+    min-height: 100vh; position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 140px 24px 96px;
+  }
+  .hero-photo {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-hero.jpg') center 32% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+  }
+  .hero-tint {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(253,245,247,.84) 0%, rgba(253,246,249,.6) 42%, rgba(254,247,249,.2) 88%),
+      radial-gradient(900px 500px at 15% 25%, rgba(242,109,158,.16), transparent 60%),
+      radial-gradient(900px 500px at 85% 75%, rgba(247,161,188,.2), transparent 60%);
+  }
+  .hero > *:not(.hero-photo):not(.hero-tint) { position: relative; z-index: 1; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .35em; color: var(--muted); text-transform: uppercase; }
+  .name {
+    margin: 26px 0 14px; font-size: clamp(64px, 13vw, 150px);
+    font-weight: 600; letter-spacing: -.035em; line-height: 1.05;
+    background: linear-gradient(180deg, #c94374 0%, #f291ae 60%, #ffc3d4 100%);
+    background-size: 100% 220%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: name-shift 9s var(--ease) infinite alternate;
+  }
+  @keyframes name-shift { from { background-position: 0 0; } to { background-position: 0 100%; } }
+  .tagline {
+    font-size: clamp(20px, 2.8vw, 32px); font-weight: 600; letter-spacing: .04em;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub { margin-top: 18px; color: var(--muted); font-size: 15px; }
+  .hero-meta {
+    margin-top: 14px; color: var(--muted); font-size: 13.5px;
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
+  .hero-meta a { transition: color .3s; }
+  .hero-meta a:hover { color: #d94f7e; }
+  .sep { opacity: .4; }
+
+  .stats { margin-top: 84px; width: 100%; max-width: 920px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat { padding: 28px 12px; border: 1px solid transparent; border-radius: 20px; transition: background .4s, border-color .4s; }
+  .stat:hover { background: rgba(255,255,255,.6); border-color: var(--line); }
+  .stat-num {
+    font-size: clamp(34px, 4.4vw, 52px); font-weight: 600; letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-num .suf { font-size: .55em; margin-left: 2px; }
+  .stat-num .pre { font-size: .42em; letter-spacing: .1em; }
+  .stat-label { margin-top: 10px; font-size: 15px; font-weight: 600; }
+  .stat-desc { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
+
+  .scroll-cue { position: absolute; bottom: 36px; left: 50%; color: #d98ca5; animation: bob 2.6s ease-in-out infinite; }
+  .scroll-cue svg { display: block; }
+  @keyframes bob {
+    0%, 100% { transform: translate(-50%, 0); opacity: .45; }
+    50% { transform: translate(-50%, 8px); opacity: 1; }
+  }
+
+  /* ---- 章节 ---- */
+  .section { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 130px 24px 30px; }
+  .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 52px; }
+  .sec-num {
+    font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .sec-title { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
+  .sec-en { margin-left: auto; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---- 樱花实景横幅 ---- */
+  .banner { position: relative; z-index: 1; max-width: 1080px; margin: 70px auto 0; padding: 0 24px; }
+  .banner-img {
+    height: 320px; border-radius: 24px; position: relative; overflow: hidden;
+    background-size: cover; background-position: center 40%;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 32px rgba(214,143,164,.12);
+  }
+  .banner-img::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(232,90,147,.13), rgba(255,179,198,.13));
+  }
+  .banner-cap { margin-top: 12px; text-align: center; font-size: 12.5px; letter-spacing: .25em; color: var(--muted); }
+
+  /* ---- 卡片 ---- */
+  .card {
+    position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: 24px; padding: 42px 46px;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(214,143,164,.1);
+    transition: transform .55s var(--spring), border-color .5s, box-shadow .5s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: rgba(232,90,147,.38); box-shadow: 0 24px 60px rgba(226,97,147,.16); }
+  .card-title { font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
+  .card-sub { margin-top: 6px; color: var(--muted); font-size: 13.5px; }
+  .date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .badge {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    font-size: 12.5px; font-weight: 600; white-space: nowrap;
+    background: rgba(232,90,147,.1); border: 1px solid rgba(232,90,147,.3); color: #c94374;
+  }
+  .badge.grad { background: linear-gradient(120deg, #e0558c, #f59ab4); border: none; color: #fff; }
+
+  /* ---- 创新点高亮条 ---- */
+  .inno {
+    margin-top: 22px; display: flex; gap: 14px; align-items: flex-start;
+    background: linear-gradient(120deg, rgba(232,90,147,.07), rgba(255,179,198,.09));
+    border: 1px solid rgba(232,90,147,.22);
+    border-radius: 14px; padding: 14px 18px;
+  }
+  .inno-tag {
+    flex-shrink: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    color: #fff; background: var(--grad); padding: 4px 10px; border-radius: 999px;
+  }
+  .inno-text { font-size: 13.5px; line-height: 1.7; color: #8a4a60; font-weight: 500; }
+
+  /* ---- 时间线（项目经历） ---- */
+  .timeline { display: grid; gap: 36px; }
+  .t-item { display: grid; grid-template-columns: 180px 1fr; gap: 30px; align-items: start; }
+  .t-date { padding-top: 44px; text-align: right; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.6; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 4px; }
+  .points { margin-top: 18px; list-style: none; display: grid; gap: 12px; }
+  .points li { position: relative; padding-left: 22px; color: var(--text-2); font-size: 15px; line-height: 1.8; }
+  .points li::before {
+    content: ""; position: absolute; left: 2px; top: 11px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--grad);
+  }
+  .hl {
+    font-weight: 600; font-variant-numeric: tabular-nums;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 12px; padding: 5px 13px; border-radius: 999px;
+    background: rgba(232,90,147,.06); border: 1px solid rgba(240,160,185,.35); color: #a8607c;
+  }
+
+  /* ---- 教育背景 ---- */
+  .edu-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+  .edu-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+
+  /* ---- 校园经历迷你卡 ---- */
+  .mini-grid { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .mini {
+    background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px 24px; transition: transform .55s var(--spring), border-color .5s;
+  }
+  .mini:hover { transform: translateY(-3px); border-color: rgba(232,90,147,.32); }
+  .mini-num {
+    font-size: 40px; font-weight: 600; font-variant-numeric: tabular-nums;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .mini-num small { font-size: .55em; font-weight: 500; }
+  .mini-title { margin-top: 10px; font-size: 15px; font-weight: 600; }
+  .mini-desc { margin-top: 8px; font-size: 13px; line-height: 1.7; color: var(--muted); }
+
+  /* ---- 技能特长 ---- */
+  .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .skill-card .card-title { font-size: 17px; }
+  .skill-card .tags { margin-top: 16px; }
+  .eval { grid-column: 1 / -1; text-align: center; padding: 56px 48px; }
+  .quote-mark {
+    font-size: 64px; line-height: 1; font-weight: 600;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .eval p { margin: 14px auto 22px; max-width: 760px; font-size: 17px; line-height: 1.9; color: var(--text-2); }
+  .eval-label { display: inline-block; font-size: 12.5px; font-weight: 600; letter-spacing: .25em; color: var(--muted); text-transform: uppercase; }
+
+  /* ---- 页脚 ---- */
+  footer {
+    position: relative; z-index: 1; margin-top: 130px;
+    border-top: 1px solid rgba(233,150,175,.22);
+    padding: 48px 24px 56px; text-align: center;
+  }
+  .foot-name { font-size: 17px; font-weight: 600; }
+  .foot-contact { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+  .foot-switch { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
+  .foot-switch a { color: #c94374; font-weight: 600; transition: opacity .3s; }
+  .foot-switch a:hover { opacity: .7; }
+  .foot-copy { margin-top: 22px; font-size: 12px; color: #c2a3ae; }
+
+  /* ---- 滚动渐入动画 ---- */
+  .js .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 1s var(--ease), transform 1s var(--ease);
+    transition-delay: var(--d, 0s);
+  }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* ---- 移动端 ---- */
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .t-item { grid-template-columns: 1fr; gap: 12px; }
+    .t-date { padding: 0; text-align: left; }
+    .card { padding: 28px 22px; border-radius: 20px; }
+    .mini-grid { grid-template-columns: 1fr; }
+    .skill-grid { grid-template-columns: 1fr; }
+    .edu-right { align-items: flex-start; }
+    .section { padding: 96px 22px 10px; }
+    .hero { padding-top: 120px; }
+    .sec-en { display: none; }
+    .banner-img { height: 200px; border-radius: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .petal, .sakura, .scroll-cue, .name { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<!-- 全页实景背景 + 樱花粉辅助层 -->
+<div class="bg-photo"></div>
+<div class="bg-tint"></div>
+
+<!-- 樱花花朵 -->
+<div class="sakura" style="top:14%; left:4%;  width:96px; height:96px; opacity:.2;  filter:blur(2px);   animation-duration:34s"></div>
+<div class="sakura" style="top:58%; left:87%; width:76px; height:76px; opacity:.22; filter:blur(1.5px); animation-duration:28s; animation-delay:-9s"></div>
+<div class="sakura" style="top:30%; left:93%; width:48px; height:48px; opacity:.3;  filter:blur(.5px);  animation-duration:22s; animation-delay:-5s"></div>
+<div class="sakura" style="top:78%; left:3%;  width:58px; height:58px; opacity:.22; filter:blur(1px);   animation-duration:30s; animation-delay:-14s"></div>
+<div class="sakura b" style="top:6%;  left:62%; width:44px; height:44px; opacity:.28; filter:blur(.5px);  animation-duration:24s; animation-delay:-8s"></div>
+<div class="sakura b" style="top:88%; left:78%; width:64px; height:64px; opacity:.18; filter:blur(1.5px); animation-duration:36s; animation-delay:-20s"></div>
+
+<!-- 飘落花瓣 -->
+<div class="petal" style="left:6%;  width:12px; height:12px; animation-duration:22s; animation-delay:-4s"></div>
+<div class="petal b" style="left:14%; width:15px; height:15px; animation-duration:25s; animation-delay:-11s"></div>
+<div class="petal" style="left:25%; width:10px; height:10px; animation-duration:19s; animation-delay:-7s"></div>
+<div class="petal" style="left:34%; width:16px; height:16px; animation-duration:26s; animation-delay:-16s"></div>
+<div class="petal b" style="left:46%; width:11px; height:11px; animation-duration:21s; animation-delay:-3s"></div>
+<div class="petal" style="left:55%; width:13px; height:13px; animation-duration:23s; animation-delay:-13s"></div>
+<div class="petal" style="left:63%; width:10px; height:10px; animation-duration:18s; animation-delay:-6s"></div>
+<div class="petal" style="left:72%; width:14px; height:14px; animation-duration:27s; animation-delay:-10s"></div>
+<div class="petal b" style="left:81%; width:12px; height:12px; animation-duration:20s; animation-delay:-15s"></div>
+<div class="petal" style="left:90%; width:11px; height:11px; animation-duration:24s; animation-delay:-9s"></div>
+<div class="petal" style="left:96%; width:9px;  height:9px;  animation-duration:21s; animation-delay:-17s"></div>
+
+<header class="nav" id="topnav">
+  <div class="nav-inner">
+    <div class="nav-brand">张莉晗 <span style="color:var(--muted);font-weight:400">· 数据分析师</span></div>
+    <nav class="nav-links">
+      <a href="#edu">教育背景</a>
+      <a href="#projects">项目经历</a>
+      <a href="#campus">校园经历</a>
+      <a href="#skills">技能特长</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-tint"></div>
+  <div class="eyebrow reveal">个人简历 · Resume</div>
+  <h1 class="name reveal" style="--d:.12s">张莉晗</h1>
+  <div class="tagline reveal" style="--d:.24s">数据分析师</div>
+  <p class="hero-sub reveal" style="--d:.34s">郑州升达经贸管理学院 · 大数据管理与应用 · 2027 届</p>
+  <div class="hero-meta reveal" style="--d:.42s">
+    <a href="tel:+8617365935097">(+86) 17365935097</a>
+    <span class="sep">·</span>
+    <a href="mailto:17365935097@163.com">17365935097@163.com</a>
+    <span class="sep">·</span>
+    <span>女</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat reveal" style="--d:.5s">
+      <div class="stat-num"><span data-count="60">0</span><span class="suf">%</span></div>
+      <div class="stat-label">误判率下降</div>
+      <div class="stat-desc">AIGC 智能体多场景调优</div>
+    </div>
+    <div class="stat reveal" style="--d:.6s">
+      <div class="stat-num"><span data-count="100">0</span><span class="suf">%</span></div>
+      <div class="stat-label">设备连通率</div>
+      <div class="stat-desc">校园局域网全网联调</div>
+    </div>
+    <div class="stat reveal" style="--d:.7s">
+      <div class="stat-num"><span data-count="2">0</span><span class="suf">次</span></div>
+      <div class="stat-label">项目负责人</div>
+      <div class="stat-desc">统筹团队项目落地</div>
+    </div>
+    <div class="stat reveal" style="--d:.8s">
+      <div class="stat-num"><span class="pre">TOP </span><span data-count="20">0</span><span class="suf">%</span></div>
+      <div class="stat-label">专业排名</div>
+      <div class="stat-desc">GPA 3.40 / 4.0</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<main>
+  <!-- 01 教育背景 -->
+  <section class="section" id="edu">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">教育背景</h2>
+      <span class="sec-en">Education</span>
+    </div>
+    <div class="card reveal">
+      <div class="edu-grid">
+        <div>
+          <h3 class="card-title">郑州升达经贸管理学院</h3>
+          <p class="card-sub">大数据管理与应用 · 管理学学士</p>
+        </div>
+        <div class="edu-right">
+          <span class="date">2023.09 — 2027.07</span>
+          <span class="badge grad">GPA 3.40 / 4.0 · TOP 20%</span>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">Java 程序设计</span>
+        <span class="tag">Python 编程</span>
+        <span class="tag">数据库原理</span>
+        <span class="tag">数据可视化</span>
+        <span class="tag">数据挖掘</span>
+        <span class="tag">分布式计算</span>
+        <span class="tag">数字化运营</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 项目经历 -->
+  <section class="section" id="projects">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">项目经历</h2>
+      <span class="sec-en">Projects</span>
+    </div>
+
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-date reveal">2025.06</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">前程购物项目 NoSQL 数据库选型</h3>
+            <span class="badge grad">项目负责人</span>
+          </div>
+          <p class="card-sub">Web + NoSQL 一体化电商系统</p>
+          <ul class="points">
+            <li>搭建完整电商业务系统，基于「高并发 + 海量日志」业务数据特征设计分层存储架构，以数据特征驱动技术选型</li>
+            <li>通过性能压测与业务模拟采集关键指标数据，对比验证 Redis、MongoDB 多类非关系型数据库的适配场景差异</li>
+            <li>沉淀 Web + NoSQL 一体化系统设计经验，形成「数据特征 → 架构决策」的选型方法论</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">数据特征驱动选型——用业务数据画像指导架构决策，拒绝"一刀切"</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Redis</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">数据建模</span>
+            <span class="tag">性能压测</span>
+            <span class="tag">系统架构</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date reveal">2026.06 — 2026.07</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">Coze 平台 AIGC 智能体研发</h3>
+            <span class="badge">项目第二负责人</span>
+          </div>
+          <p class="card-sub">健康膳食垂直智能体 · 实习项目</p>
+          <ul class="points">
+            <li>带领 <span class="hl">3</span> 人小组构建膳食关键词筛选库，完成词库清洗、规则匹配与前置过滤，以「数据先行」策略约束大模型推理</li>
+            <li>基于多场景测试数据评估与迭代调优，无关问答误判率下降 <span class="hl">60%</span>，用数据指标闭环驱动 AI 产品改进</li>
+            <li>产出可现场演示成品与全套工程文档，形成可复用的数据调优记录</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">数据指标闭环——用测试数据（误判率）量化驱动 AI 产品迭代</p>
+          </div>
+          <div class="tags">
+            <span class="tag">词库建设</span>
+            <span class="tag">数据评估</span>
+            <span class="tag">Coze 平台</span>
+            <span class="tag">AIGC 智能体</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date reveal">2026.08 — 2026.09</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">AI 全栈开发 — Claude Code × DeepSeek 集成实践</h3>
+            <span class="badge grad">独立开发</span>
+          </div>
+          <p class="card-sub">AI 编程框架与底座大模型集成 · 个人作品</p>
+          <ul class="points">
+            <li>熟练运用 Claude Code 编程框架与 DeepSeek 大模型，搭建 AI 辅助分析开发工具链，独立完成软件从需求到部署的全流程交付</li>
+            <li>用 AI 工具自动化完成页面构建、内容整理与发布运维，沉淀「AI × 数据」提效方法论</li>
+            <li>成果：个人简历网站已上线（GitHub Pages），持续迭代更新</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">AI 工具链提效——数据分析与开发工作流的 AI 自动化改造</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Claude Code</span>
+            <span class="tag">DeepSeek</span>
+            <span class="tag">大模型 API</span>
+            <span class="tag">AI 工具链</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date reveal">2025.10 — 2026.01</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">数据通信网络项目实践</h3>
+            <span class="badge grad">项目负责人</span>
+          </div>
+          <p class="card-sub">多楼宇校园局域网组网</p>
+          <ul class="points">
+            <li>主导校园局域网组网与运维，建立分段 IP 地址规划与分配台账，实现网络数据规范化管理，设备连通率 <span class="hl">100%</span>、零丢包</li>
+            <li>完成全网联调与压力测试，以「数据台账 + 标准化文档」双轨沉淀运维经验</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">台账 + 文档双轨——把运维过程数据化、可复用化</p>
+          </div>
+          <div class="tags">
+            <span class="tag">数据台账</span>
+            <span class="tag">VLAN</span>
+            <span class="tag">路由协议</span>
+            <span class="tag">网络运维</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 樱花实景横幅 -->
+  <div class="banner reveal">
+    <div class="banner-img" style="background-image:url('images/sakura-banner.jpg')"></div>
+    <div class="banner-cap">🌸 樱花盛景 · Sakura in Bloom</div>
+  </div>
+
+  <!-- 03 校园经历 -->
+  <section class="section" id="campus">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">校园经历</h2>
+      <span class="sec-en">Campus Experience</span>
+    </div>
+    <div class="card reveal">
+      <div class="card-head">
+        <h3 class="card-title">升达-腾讯云数智产业学院 · 专业实习</h3>
+        <span class="badge grad">校企合作 · 腾讯云</span>
+      </div>
+      <p class="card-sub date">2024.11 — 2025.01</p>
+      <div class="mini-grid">
+        <div class="mini">
+          <div class="mini-num">15<small>+</small></div>
+          <div class="mini-title">安全案例拆解</div>
+          <p class="mini-desc">梳理攻击成因、传播链路与应急处置流程，搭建数据安全防护体系</p>
+        </div>
+        <div class="mini">
+          <div class="mini-num">6<small>类</small></div>
+          <div class="mini-title">技术落地边界</div>
+          <p class="mini-desc">研学大数据与 AIGC 商业化场景，配套风险管控细则，形成产业风险对照清单</p>
+        </div>
+        <div class="mini">
+          <div class="mini-num">4<small>篇</small></div>
+          <div class="mini-title">研学复盘笔记</div>
+          <p class="mini-desc">参与芯片与数字产业前沿分享，构建大数据产业认知框架</p>
+        </div>
+      </div>
+      <div class="inno">
+        <span class="inno-tag">创新点</span>
+        <p class="inno-text">把碎片化研学输出为「风险对照清单 + 认知框架」两类结构化资产</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 技能特长 -->
+  <section class="section" id="skills">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">技能特长</h2>
+      <span class="sec-en">Skills</span>
+    </div>
+    <div class="skill-grid">
+      <div class="card skill-card reveal">
+        <h3 class="card-title">数据分析</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">SPSS</span>
+          <span class="tag">Eviews</span>
+          <span class="tag">数据可视化</span>
+          <span class="tag">数据挖掘</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal" style="--d:.08s">
+        <h3 class="card-title">数据库与工程</h3>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">NoSQL（Redis / MongoDB）</span>
+          <span class="tag">Web 前端</span>
+          <span class="tag">分布式计算</span>
+          <span class="tag">Office 全系列</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal" style="--d:.16s">
+        <h3 class="card-title">AI 工具链</h3>
+        <div class="tags">
+          <span class="tag">AIGC 智能体</span>
+          <span class="tag">大模型 API</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">DeepSeek</span>
+          <span class="tag">Coze 工作流</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal" style="--d:.24s">
+        <h3 class="card-title">语言能力</h3>
+        <div class="tags">
+          <span class="tag">英语 CET-4</span>
+          <span class="tag">普通话二级甲等</span>
+        </div>
+      </div>
+      <div class="card eval reveal" style="--d:.1s">
+        <div class="quote-mark">&ldquo;</div>
+        <p>具备扎实的数据分析工具链（Python、SQL、SPSS、Eviews）与数据工程、AI 智能体多类项目实操经验，多次担任项目负责人统筹团队落地，团队协作意识突出；数据驱动意识强，熟练运用 AI 工具与编程框架提升分析效率，学习适配能力突出。</p>
+        <span class="eval-label">自我评价 · About Me</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-name">张莉晗 <span style="color:var(--muted);font-weight:400">· 数据分析师</span></div>
+  <div class="foot-contact">(+86) 17365935097 · 17365935097@163.com · 郑州升达经贸管理学院 2027 届</div>
+  <div class="foot-switch">另见：<a href="index.html">AI 应用工程师版简历 →</a></div>
+  <div class="foot-copy">&copy; 2026 张莉晗 · Sakura Minimal</div>
+</footer>
+
+<script>
+  // 导航滚动阴影
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+
+  // 滚动渐入动画
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 数字滚动动画
+  function countUp(el) {
+    const target = parseFloat(el.dataset.count);
+    const dur = 1400, t0 = performance.now();
+    (function step(t) {
+      const p = Math.min((t - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+</script>
+</body>
+</html>
