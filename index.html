@@ -24,11 +24,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    background:
-      radial-gradient(1100px 620px at 82% -8%, rgba(255,150,180,.26), transparent 62%),
-      radial-gradient(1000px 600px at -12% 40%, rgba(255,195,214,.22), transparent 60%),
-      radial-gradient(1200px 700px at 90% 100%, rgba(110,168,254,.24), transparent 62%),
-      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 32%, #f5f8fe 100%);
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
                  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
@@ -38,6 +34,21 @@
   }
   ::selection { background: rgba(178,140,255,.28); }
   a { color: inherit; text-decoration: none; }
+
+  /* ---- 全页实景背景纹理 + 粉蓝辅助层 ---- */
+  .bg-photo {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-footer.jpg') center / cover no-repeat;
+    opacity: .11;
+  }
+  .bg-tint {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(1100px 620px at 82% -8%, rgba(255,150,180,.28), transparent 62%),
+      radial-gradient(1000px 600px at -12% 40%, rgba(255,195,214,.24), transparent 60%),
+      radial-gradient(1200px 700px at 90% 100%, rgba(110,168,254,.26), transparent 62%),
+      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 32%, #f5f8fe 100%);
+  }
 
   /* ---- 飘落樱花花瓣 ---- */
   .petal {
@@ -107,6 +118,20 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 140px 24px 96px;
   }
+  .hero-photo {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: url('images/sakura-hero.jpg') center 32% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.6) 55%, transparent 96%);
+  }
+  .hero-tint {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(253,245,247,.82) 0%, rgba(253,246,249,.58) 42%, rgba(245,248,254,.18) 88%),
+      radial-gradient(900px 500px at 15% 25%, rgba(242,109,158,.16), transparent 60%),
+      radial-gradient(900px 500px at 85% 75%, rgba(110,168,254,.2), transparent 60%);
+  }
+  .hero > *:not(.hero-photo):not(.hero-tint) { position: relative; z-index: 1; }
   .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .35em; color: var(--muted); text-transform: uppercase; }
   .name {
     margin: 26px 0 14px; font-size: clamp(64px, 13vw, 150px);
@@ -163,6 +188,20 @@
   }
   .sec-title { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -.02em; }
   .sec-en { margin-left: auto; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---- 樱花实景横幅 ---- */
+  .banner { position: relative; z-index: 1; max-width: 1080px; margin: 70px auto 0; padding: 0 24px; }
+  .banner-img {
+    height: 320px; border-radius: 24px; position: relative; overflow: hidden;
+    background-size: cover; background-position: center 40%;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 32px rgba(160,130,210,.12);
+  }
+  .banner-img::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(242,109,158,.16), rgba(110,168,254,.16));
+  }
+  .banner-cap { margin-top: 12px; text-align: center; font-size: 12.5px; letter-spacing: .25em; color: var(--muted); }
 
   /* ---- 卡片 ---- */
   .card {
@@ -285,6 +324,7 @@
     .section { padding: 96px 22px 10px; }
     .hero { padding-top: 120px; }
     .sec-en { display: none; }
+    .banner-img { height: 200px; border-radius: 18px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -294,6 +334,10 @@
 </style>
 </head>
 <body>
+<!-- 全页实景背景 + 粉蓝辅助层 -->
+<div class="bg-photo"></div>
+<div class="bg-tint"></div>
+
 <!-- 樱花花朵 -->
 <div class="sakura" style="top:14%; left:4%;  width:96px; height:96px; opacity:.2;  filter:blur(2px);   animation-duration:34s"></div>
 <div class="sakura" style="top:58%; left:87%; width:76px; height:76px; opacity:.22; filter:blur(1.5px); animation-duration:28s; animation-delay:-9s"></div>
@@ -328,6 +372,8 @@
 </header>
 
 <section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-tint"></div>
   <div class="eyebrow reveal">个人简历 · Resume</div>
   <h1 class="name reveal" style="--d:.12s">张莉晗</h1>
   <div class="tagline reveal" style="--d:.24s">数据分析师</div>
@@ -409,6 +455,34 @@
 
     <div class="timeline">
       <div class="t-item">
+        <div class="t-date reveal">2026.08 — 2026.09</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">AI 全栈开发 — Claude Code × DeepSeek 集成实践</h3>
+            <span class="badge grad">独立开发</span>
+          </div>
+          <p class="card-sub">AI 编程框架与底座大模型集成 · 个人作品</p>
+          <ul class="points">
+            <li>在 Claude Code 编程框架中完整接入 DeepSeek 大模型，打通「模型 API — 编程 Agent — 工程实践」全链路，可独立完成底座模型切换与参数调优</li>
+            <li>借助 AI 全流程独立完成软件交付：需求分析、视觉与交互设计、编码实现、版本管理与线上部署，产出可公开访问的正式产品</li>
+            <li>成果：个人简历网站已部署上线（GitHub Pages），含主题化视觉系统、响应式布局、滚动动效与持续迭代更新</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">「框架 × 底座模型」解耦集成——不绑定单一 AI 产品，以编程框架 + 通用大模型的组合独立完成从 0 到 1 的软件交付</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Claude Code</span>
+            <span class="tag">DeepSeek</span>
+            <span class="tag">大模型 API</span>
+            <span class="tag">Agent 工作流</span>
+            <span class="tag">HTML · CSS · JS</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
         <div class="t-date reveal">2026.06 — 2026.07</div>
         <div class="card reveal" style="--d:.1s">
           <div class="card-head">
@@ -430,6 +504,31 @@
             <span class="tag">AIGC 智能体</span>
             <span class="tag">大模型应用</span>
             <span class="tag">工作流设计</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-date reveal">2025.10 — 2026.01</div>
+        <div class="card reveal" style="--d:.1s">
+          <div class="card-head">
+            <h3 class="card-title">数据通信网络项目实践</h3>
+            <span class="badge grad">项目负责人</span>
+          </div>
+          <p class="card-sub">多楼宇校园局域网组网</p>
+          <ul class="points">
+            <li>主导校园局域网整体组网：设备选型、IP 规划、VLAN / Trunk / 802.1Q 配置与静态 + 动态路由，连通率 <span class="hl">100%</span>、零丢包</li>
+            <li>完成全网联调与压力测试，排查路由冲突、链路阻塞、跨网段访问等故障</li>
+          </ul>
+          <div class="inno">
+            <span class="inno-tag">创新点</span>
+            <p class="inno-text">标准化工程文档体系——拓扑图、IP 台账、运维手册全沉淀，把一次性项目变成可复用资产</p>
+          </div>
+          <div class="tags">
+            <span class="tag">VLAN</span>
+            <span class="tag">路由协议</span>
+            <span class="tag">网络规划</span>
+            <span class="tag">故障排查</span>
           </div>
         </div>
       </div>
@@ -459,33 +558,14 @@
           </div>
         </div>
       </div>
-
-      <div class="t-item">
-        <div class="t-date reveal">2025.10 — 2026.01</div>
-        <div class="card reveal" style="--d:.1s">
-          <div class="card-head">
-            <h3 class="card-title">数据通信网络项目实践</h3>
-            <span class="badge grad">项目负责人</span>
-          </div>
-          <p class="card-sub">多楼宇校园局域网组网</p>
-          <ul class="points">
-            <li>主导校园局域网整体组网：设备选型、IP 规划、VLAN / Trunk / 802.1Q 配置与静态 + 动态路由，连通率 <span class="hl">100%</span>、零丢包</li>
-            <li>完成全网联调与压力测试，排查路由冲突、链路阻塞、跨网段访问等故障</li>
-          </ul>
-          <div class="inno">
-            <span class="inno-tag">创新点</span>
-            <p class="inno-text">标准化工程文档体系——拓扑图、IP 台账、运维手册全沉淀，把一次性项目变成可复用资产</p>
-          </div>
-          <div class="tags">
-            <span class="tag">VLAN</span>
-            <span class="tag">路由协议</span>
-            <span class="tag">网络规划</span>
-            <span class="tag">故障排查</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
+
+  <!-- 樱花实景横幅 -->
+  <div class="banner reveal">
+    <div class="banner-img" style="background-image:url('images/sakura-banner.jpg')"></div>
+    <div class="banner-cap">🌸 樱花盛景 · Sakura in Bloom</div>
+  </div>
 
   <!-- 03 校园经历 -->
   <section class="section" id="campus">
@@ -554,12 +634,14 @@
         </div>
       </div>
       <div class="card skill-card reveal" style="--d:.16s">
-        <h3 class="card-title">AI 与智能体</h3>
+        <h3 class="card-title">AI 与大模型</h3>
         <div class="tags">
           <span class="tag">AIGC 智能体</span>
-          <span class="tag">大模型应用</span>
+          <span class="tag">大模型 API 集成</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">DeepSeek</span>
           <span class="tag">Coze 工作流</span>
-          <span class="tag">AI 工具</span>
+          <span class="tag">Agent 工作流</span>
         </div>
       </div>
       <div class="card skill-card reveal" style="--d:.24s">
@@ -571,7 +653,7 @@
       </div>
       <div class="card eval reveal" style="--d:.1s">
         <div class="quote-mark">&ldquo;</div>
-        <p>具备 AIGC 智能体、Web 数据库、局域网组网多类项目实操经验，多次担任项目负责人统筹团队落地，团队协作意识突出；自主钻研大模型、网络、数据库相关技术，学习适配能力强，熟练使用 AI 工具。</p>
+        <p>具备 AIGC 智能体、Web 数据库、局域网组网多类项目实操经验，多次担任项目负责人统筹团队落地，团队协作意识突出；自主钻研大模型、网络、数据库相关技术，可熟练运用 AI 编程框架与大模型独立完成软件全流程开发，学习适配能力强。</p>
         <span class="eval-label">自我评价 · About Me</span>
       </div>
     </div>
