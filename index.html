@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#fdf5f7" />
 <title>张莉晗 · 数据分析师 — 个人简历</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
 <script>document.documentElement.classList.add('js')</script>
@@ -11,21 +12,23 @@
     --bg: #fdf5f7;
     --text: #35262c;
     --text-2: #5c4650;
-    --muted: #a3858e;
+    --muted: #a08ba0;
     --card: rgba(255,255,255,.72);
-    --line: rgba(214,143,164,.26);
+    --line: rgba(186,155,220,.28);
     --g1: #f26d9e;
-    --g2: #ffb3c6;
-    --grad: linear-gradient(120deg, #f26d9e, #ff9eb5);
+    --g2: #6ea8fe;
+    --g3: #b48cff;
+    --grad: linear-gradient(120deg, #f26d9e 0%, #b48cff 50%, #6ea8fe 100%);
     --ease: cubic-bezier(.16, 1, .3, 1);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(255,179,198,.22), transparent 60%),
-      radial-gradient(900px 500px at -10% 30%, rgba(255,203,216,.18), transparent 60%),
-      var(--bg);
+      radial-gradient(1100px 620px at 82% -8%, rgba(255,150,180,.26), transparent 62%),
+      radial-gradient(1000px 600px at -12% 40%, rgba(255,195,214,.22), transparent 60%),
+      radial-gradient(1200px 700px at 90% 100%, rgba(110,168,254,.24), transparent 62%),
+      linear-gradient(180deg, #fdf4f7 0%, #fdf6f9 32%, #f5f8fe 100%);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
                  "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
@@ -33,7 +36,7 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
-  ::selection { background: rgba(242,109,158,.25); }
+  ::selection { background: rgba(178,140,255,.28); }
   a { color: inherit; text-decoration: none; }
 
   /* ---- 飘落樱花花瓣 ---- */
@@ -45,12 +48,40 @@
     opacity: .55;
     animation: petal-fall linear infinite;
   }
+  .petal.b { background: linear-gradient(135deg, #e3edff, #9dbdf9); }
   @keyframes petal-fall {
     0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
     25%  { transform: translate3d(30px, 28vh, 0) rotate(90deg); }
     50%  { transform: translate3d(-20px, 56vh, 0) rotate(180deg); }
     75%  { transform: translate3d(26px, 84vh, 0) rotate(270deg); }
     100% { transform: translate3d(-10px, 115vh, 0) rotate(360deg); }
+  }
+
+  /* ---- 樱花花朵 ---- */
+  .sakura {
+    position: fixed; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 15%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 83% 39%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 71% 78%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 29% 78%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 17% 39%, #ffc3d6 0 26%, transparent 27%),
+      radial-gradient(circle at 50% 50%, #ffd9e4 0 13%, transparent 14%);
+    animation: flower-drift linear infinite;
+  }
+  .sakura.b {
+    background:
+      radial-gradient(circle at 50% 15%, #c9dcff 0 26%, transparent 27%),
+      radial-gradient(circle at 83% 39%, #c9dcff 0 26%, transparent 27%),
+      radial-gradient(circle at 71% 78%, #c9dcff 0 26%, transparent 27%),
+      radial-gradient(circle at 29% 78%, #c9dcff 0 26%, transparent 27%),
+      radial-gradient(circle at 17% 39%, #c9dcff 0 26%, transparent 27%),
+      radial-gradient(circle at 50% 50%, #e4edff 0 13%, transparent 14%);
+  }
+  @keyframes flower-drift {
+    0%   { transform: rotate(0deg) translateY(-12px); }
+    50%  { transform: rotate(180deg) translateY(12px); }
+    100% { transform: rotate(360deg) translateY(-12px); }
   }
 
   /* ---- 顶部导航 ---- */
@@ -68,7 +99,7 @@
   .nav-brand { font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
   .nav-links { display: flex; gap: 28px; }
   .nav-links a { font-size: 13px; color: var(--muted); transition: color .3s; }
-  .nav-links a:hover { color: #e0558c; }
+  .nav-links a:hover { color: #a06cf0; }
 
   /* ---- 首屏 Hero ---- */
   .hero {
@@ -80,7 +111,7 @@
   .name {
     margin: 26px 0 14px; font-size: clamp(64px, 13vw, 150px);
     font-weight: 600; letter-spacing: -.035em; line-height: 1.05;
-    background: linear-gradient(180deg, #d94f7e 25%, #f4a0ba);
+    background: linear-gradient(180deg, #e0558c 0%, #b48cff 55%, #7aa2f7 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -96,7 +127,7 @@
     display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   }
   .hero-meta a { transition: color .3s; }
-  .hero-meta a:hover { color: #e0558c; }
+  .hero-meta a:hover { color: #a06cf0; }
   .sep { opacity: .4; }
 
   .stats { margin-top: 84px; width: 100%; max-width: 920px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -114,7 +145,7 @@
   .stat-label { margin-top: 10px; font-size: 15px; font-weight: 600; }
   .stat-desc { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
 
-  .scroll-cue { position: absolute; bottom: 36px; left: 50%; color: #cf8ba1; animation: bob 2.6s ease-in-out infinite; }
+  .scroll-cue { position: absolute; bottom: 36px; left: 50%; color: #b08fc9; animation: bob 2.6s ease-in-out infinite; }
   .scroll-cue svg { display: block; }
   @keyframes bob {
     0%, 100% { transform: translate(-50%, 0); opacity: .45; }
@@ -138,32 +169,32 @@
     position: relative; background: var(--card); border: 1px solid var(--line);
     border-radius: 24px; padding: 42px 46px;
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(214,143,164,.08);
+    box-shadow: 0 8px 32px rgba(160,130,210,.1);
     transition: transform .5s var(--ease), border-color .5s, box-shadow .5s;
   }
-  .card:hover { transform: translateY(-3px); border-color: rgba(242,109,158,.4); box-shadow: 0 24px 60px rgba(236,92,147,.14); }
+  .card:hover { transform: translateY(-3px); border-color: rgba(150,130,220,.45); box-shadow: 0 24px 60px rgba(120,110,200,.16); }
   .card-title { font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
   .card-sub { margin-top: 6px; color: var(--muted); font-size: 13.5px; }
   .date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
   .badge {
     display: inline-block; padding: 6px 14px; border-radius: 999px;
     font-size: 12.5px; font-weight: 600; white-space: nowrap;
-    background: rgba(242,109,158,.12); border: 1px solid rgba(242,109,158,.32); color: #cf4273;
+    background: rgba(178,140,255,.12); border: 1px solid rgba(150,130,220,.32); color: #8a5fb0;
   }
-  .badge.grad { background: linear-gradient(120deg, #ef5d94, #f890ad); border: none; color: #fff; }
+  .badge.grad { background: linear-gradient(120deg, #e85a93, #8f7bf7 55%, #4f8ef0); border: none; color: #fff; }
 
   /* ---- 创新点高亮条 ---- */
   .inno {
     margin-top: 22px; display: flex; gap: 14px; align-items: flex-start;
-    background: linear-gradient(120deg, rgba(242,109,158,.08), rgba(255,179,198,.08));
-    border: 1px solid rgba(242,109,158,.22);
+    background: linear-gradient(120deg, rgba(242,109,158,.08), rgba(110,168,254,.08));
+    border: 1px solid rgba(150,130,220,.25);
     border-radius: 14px; padding: 14px 18px;
   }
   .inno-tag {
     flex-shrink: 0; font-size: 12px; font-weight: 600; letter-spacing: .08em;
     color: #fff; background: var(--grad); padding: 4px 10px; border-radius: 999px;
   }
-  .inno-text { font-size: 13.5px; line-height: 1.7; color: #8a4a60; font-weight: 500; }
+  .inno-text { font-size: 13.5px; line-height: 1.7; color: #7a4a6e; font-weight: 500; }
 
   /* ---- 时间线（项目经历） ---- */
   .timeline { display: grid; gap: 36px; }
@@ -185,7 +216,7 @@
   .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
     font-size: 12px; padding: 5px 13px; border-radius: 999px;
-    background: rgba(242,109,158,.07); border: 1px solid rgba(214,143,164,.3); color: #9a6b7a;
+    background: rgba(178,140,255,.07); border: 1px solid rgba(186,155,220,.3); color: #8a6a9a;
   }
 
   /* ---- 教育背景 ---- */
@@ -198,7 +229,7 @@
     background: rgba(255,255,255,.6); border: 1px solid var(--line); border-radius: 18px;
     padding: 26px 24px; transition: transform .5s var(--ease), border-color .5s;
   }
-  .mini:hover { transform: translateY(-3px); border-color: rgba(242,109,158,.35); }
+  .mini:hover { transform: translateY(-3px); border-color: rgba(150,130,220,.4); }
   .mini-num {
     font-size: 40px; font-weight: 600; font-variant-numeric: tabular-nums;
     background: var(--grad);
@@ -231,7 +262,7 @@
   }
   .foot-name { font-size: 17px; font-weight: 600; }
   .foot-contact { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
-  .foot-copy { margin-top: 22px; font-size: 12px; color: #b89aa5; }
+  .foot-copy { margin-top: 22px; font-size: 12px; color: #b3a3b8; }
 
   /* ---- 滚动渐入动画 ---- */
   .js .reveal {
@@ -258,20 +289,31 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .petal, .scroll-cue { animation: none !important; }
+    .petal, .sakura, .scroll-cue { animation: none !important; }
   }
 </style>
 </head>
 <body>
-<!-- 樱花花瓣 -->
+<!-- 樱花花朵 -->
+<div class="sakura" style="top:14%; left:4%;  width:96px; height:96px; opacity:.2;  filter:blur(2px);   animation-duration:34s"></div>
+<div class="sakura" style="top:58%; left:87%; width:76px; height:76px; opacity:.22; filter:blur(1.5px); animation-duration:28s; animation-delay:-9s"></div>
+<div class="sakura" style="top:30%; left:93%; width:48px; height:48px; opacity:.3;  filter:blur(.5px);  animation-duration:22s; animation-delay:-5s"></div>
+<div class="sakura" style="top:78%; left:3%;  width:58px; height:58px; opacity:.22; filter:blur(1px);   animation-duration:30s; animation-delay:-14s"></div>
+<div class="sakura b" style="top:6%;  left:62%; width:44px; height:44px; opacity:.28; filter:blur(.5px);  animation-duration:24s; animation-delay:-8s"></div>
+<div class="sakura b" style="top:88%; left:78%; width:64px; height:64px; opacity:.18; filter:blur(1.5px); animation-duration:36s; animation-delay:-20s"></div>
+
+<!-- 飘落花瓣（粉 + 蓝） -->
 <div class="petal" style="left:6%;  width:12px; height:12px; animation-duration:22s; animation-delay:-4s"></div>
-<div class="petal" style="left:16%; width:16px; height:16px; animation-duration:26s; animation-delay:-12s"></div>
-<div class="petal" style="left:28%; width:10px; height:10px; animation-duration:19s; animation-delay:-7s"></div>
-<div class="petal" style="left:42%; width:15px; height:15px; animation-duration:24s; animation-delay:-16s"></div>
-<div class="petal" style="left:57%; width:11px; height:11px; animation-duration:20s; animation-delay:-3s"></div>
-<div class="petal" style="left:70%; width:14px; height:14px; animation-duration:27s; animation-delay:-10s"></div>
-<div class="petal" style="left:83%; width:12px; height:12px; animation-duration:21s; animation-delay:-15s"></div>
-<div class="petal" style="left:93%; width:10px; height:10px; animation-duration:18s; animation-delay:-6s"></div>
+<div class="petal b" style="left:14%; width:15px; height:15px; animation-duration:25s; animation-delay:-11s"></div>
+<div class="petal" style="left:25%; width:10px; height:10px; animation-duration:19s; animation-delay:-7s"></div>
+<div class="petal" style="left:34%; width:16px; height:16px; animation-duration:26s; animation-delay:-16s"></div>
+<div class="petal b" style="left:46%; width:11px; height:11px; animation-duration:21s; animation-delay:-3s"></div>
+<div class="petal" style="left:55%; width:13px; height:13px; animation-duration:23s; animation-delay:-13s"></div>
+<div class="petal" style="left:63%; width:10px; height:10px; animation-duration:18s; animation-delay:-6s"></div>
+<div class="petal" style="left:72%; width:14px; height:14px; animation-duration:27s; animation-delay:-10s"></div>
+<div class="petal b" style="left:81%; width:12px; height:12px; animation-duration:20s; animation-delay:-15s"></div>
+<div class="petal" style="left:90%; width:11px; height:11px; animation-duration:24s; animation-delay:-9s"></div>
+<div class="petal" style="left:96%; width:9px;  height:9px;  animation-duration:21s; animation-delay:-17s"></div>
 
 <header class="nav">
   <div class="nav-inner">
